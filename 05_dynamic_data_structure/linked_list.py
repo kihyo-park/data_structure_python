@@ -39,7 +39,10 @@ def LinkedListInsert(node, index: int, value):
         new_node.next = node
         return new_node
     
-    # find the node at position (index - 1) to insert after it 
+    # find the node at position (index - 1) to insert after it
+    # why 'index - 1'? it's because you need to modify the next pointer of the node that comes !before! the insertion point
+    # try just 'index' in the while loop and set your index as any number >= 1. You'll find something strange.
+    # it's like you couple a new car X between Y and Z, you need to decopule Y and Z, couple Y to X, and couple X to Z. 
     current = node
     count: int = 0
     while count < index - 1 and current != None:
@@ -69,7 +72,7 @@ node3.next = node4
 # this actually forms a linked list: [10 -> 20 -> 30 -> 40 -> None]
 
 new_node_inserted = LinkedListInsert(head_node, 0, 5) # index = 0
-# now it shoud be [0 -> 10 -> 20 -> 30 -> 40 -> None] 
+# now it shoud be [5 -> 10 -> 20 -> 30 -> 40 -> None] 
 print(LinkedListLookUp(new_node_inserted, 0))
 
 new_node_inserted = LinkedListInsert(head_node, 2, 5) # index = 2
