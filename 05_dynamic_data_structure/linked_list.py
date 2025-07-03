@@ -34,7 +34,7 @@ def LinkedListInsert(node, index: int, value):
     # create the new node to be inserted
     new_node = LinkedListNode(value)
 
-    # insert the new head node at the begining of the linekd list
+    # insert the new head node at the begining of the linked list
     if index == 0:
         new_node.next = node
         return new_node
@@ -60,6 +60,30 @@ def LinkedListInsert(node, index: int, value):
 
     return node
 
+def LinkedListDelete(node, index: int):
+
+    if node == None:
+        return None
+    
+    if index == 0:
+        new_head = node.next
+        return new_head
+
+    current = node
+    previous = None
+    count: int = 0
+    while count < index and current != None:
+        previous = current
+        current = current.next
+        count += 1
+
+    if current == None:
+        print(f"Index {index} is out of bounds!")
+
+    previous.next = current.next # Link the previous nod eto the node AFTER 'current'.
+
+    return node
+
 head_node = LinkedListNode(10) # element 0
 node2 = LinkedListNode(20) # element 1
 node3 = LinkedListNode(30) # element 2
@@ -71,10 +95,14 @@ node2.next = node3
 node3.next = node4
 # this actually forms a linked list: [10 -> 20 -> 30 -> 40 -> None]
 
-new_node_inserted = LinkedListInsert(head_node, 0, 5) # index = 0
-# now it shoud be [5 -> 10 -> 20 -> 30 -> 40 -> None] 
-print(LinkedListLookUp(new_node_inserted, 0))
+# deleting node at index 0
+test = LinkedListDelete(head_node, 0)
+print(LinkedListLookUp(test, 0))
 
-new_node_inserted = LinkedListInsert(head_node, 2, 5) # index = 2
+#new_node_inserted = LinkedListInsert(head_node, 0, 5) # index = 0
+# now it shoud be [5 -> 10 -> 20 -> 30 -> 40 -> None] 
+#print(LinkedListLookUp(new_node_inserted, 0))
+
+#new_node_inserted = LinkedListInsert(head_node, 2, 5) # index = 2
 # now it shoud be [10 -> 20 -> 5 -> 30 -> 40 -> None] 
-print(LinkedListLookUp(new_node_inserted, 2))
+#print(LinkedListLookUp(new_node_inserted, 2))
