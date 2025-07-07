@@ -10,7 +10,8 @@ class Stack:
     def IsEmpty(self):
         if self.array_size == 0:
             return True
-
+            # or just return self.top == -1, where -1 means the top pointer is at the position indicating an empty stack (literally the index number '-1')
+        
     def IsFull(self):
         if self.array_size == self.max_size:
             return True
@@ -25,7 +26,7 @@ class Stack:
             new_array = [None] * self.max_size
 
             self.array_size = len(new_array)
-            
+
             for i in range(old_size):
                 new_array[i] = self.array[i]
         
