@@ -36,9 +36,21 @@ class Stack:
         self.top += 1
         self.array[self.top] = value
 
+    def Pop(self):
+        if self.IsEmpty() == True:
+            print("Stack is empty.")
+        else:
+            del self.array[self.top]
+            self.top -= 1
+            print("Popped")
+
+
 s = Stack(4, [0, 1, 2, 3])
 print(s)
 s.Push(6)
+s.Pop()
+print(s)
+s.Pop()
 print(s)
 #s.push(6)
 #print(s)
