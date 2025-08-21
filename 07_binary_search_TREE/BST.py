@@ -12,25 +12,56 @@ class Node:
                 self.left.preorder()
                 print(self.key)
             
-            if self.left:
+            if self.right:
                 self.right.preorder()
                 print(self.key)
+
+    def inorder(self):
+        if self.left:
+            self.left.inorder()
+        
+        print(self.key)
+
+        if self.right:
+            self.right.inorder()
+            print(self.key)
+
+    def postorder(self):
+        if self.left:
+            self.left.postorder()
+            print(self.key)
+
+        if self.right:
+            self.right.postorder()
+        
+        print(self.key)
 
     def __str__(self):
         return str(self.key)
  
-a = Node(1)
-b = Node(2)
-c = Node(3)
-d = Node(4)
-e = Node(5)
+root = Node("root")
+a, b, c, d = Node("a"), Node("b"), Node("c"), Node("d")
+e, f, g, h = Node("e"), Node("f"), Node("g"), Node("h")
 
-# draw the tree following these lines
-a.left = b # 9
-a.right = c
-b.parent = c.parent = a
+b.parent = g.parent = root
+root.left = b
+root.right = f
+
+a.parent = d.parent = a
+b.left = a
 b.right = d
-b = d.parent = e.parent
+
+c.parent = e.parent = d
+d.left = c
+d.right = e
+
+g.parent = f
+f.right = g
+
+h.parent = g
+g.left = h
+
+root.postorder() # it shows the path of presenting nodes in preorder
 
 
 
